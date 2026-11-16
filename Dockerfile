@@ -3,11 +3,14 @@
 # 2) nginx stage to serve frontend assets
 
 # Name the node stage "builder"
-FROM node:12 AS builder
+FROM node:24 AS builder
+ARG YARN_VERSION=1.22.22
 # Set working directory
 WORKDIR /app
 # Copy all files from current directory to working dir in image
 COPY . .
+
+RUN corepack enable && corepack prepare yarn@${YARN_VERSION} --activate
 # install node modules and build assets
 
 RUN yarn install && yarn upgrade @kube-design/components && yarn rebuild-kube-design && yarn build

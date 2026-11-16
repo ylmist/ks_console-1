@@ -1,0 +1,4 @@
+
+> kubesphere-console@3.0.0 build:server
+> cross-env NODE_OPTIONS=--openssl-legacy-provider webpack -p --config scripts/webpack.server.js --display errors-only
+

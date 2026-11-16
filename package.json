@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "private": true,
   "license": "AGPL-3.0",
+  "packageManager": "yarn@1.22.22",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@kube-design/components": "^1.27.1",
@@ -180,6 +181,6 @@
     "webpackbar": "^2.6.3"
   },
   "engines": {
-    "node": ">=14 <25"
+    "node": ">=20.19.0 <25"
   }
 }
