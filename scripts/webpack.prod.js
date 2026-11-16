@@ -61,7 +61,12 @@ const config = smp.wrap({
             loader: 'postcss-loader',
             options: baseConfig.postCssOptions,
           },
-          { loader: 'sass-loader' },
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+            },
+          },
         ],
       },
       {
@@ -79,7 +84,12 @@ const config = smp.wrap({
             loader: 'postcss-loader',
             options: baseConfig.postCssOptions,
           },
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+            },
+          },
         ],
       },
       {

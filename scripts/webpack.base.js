@@ -18,7 +18,6 @@
 
 const { resolve } = require('path')
 const autoprefixer = require('autoprefixer')
-const HappyPack = require('happypack')
 const WebpackBar = require('webpackbar')
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 
@@ -35,7 +34,13 @@ module.exports = {
     {
       test: /\.jsx?$/,
       include: root('src'),
-      use: 'happypack/loader?id=jsx',
+      use: {
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true,
+          plugins: isDev ? [require.resolve('react-refresh/babel')] : [],
+        },
+      },
     },
     {
       test: /\.svg$/,
@@ -56,18 +61,6 @@ module.exports = {
     modules: [root('src'), root('src/pages'), 'node_modules'],
   },
   plugins: [
-    new HappyPack({
-      id: 'jsx',
-      loaders: [
-        {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-            plugins: isDev ? [require.resolve('react-refresh/babel')] : [],
-          },
-        },
-      ],
-    }),
     new WebpackAssetsManifest({
       entrypoints: true,
       writeToDisk: true,

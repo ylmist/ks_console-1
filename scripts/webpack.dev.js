@@ -54,13 +54,25 @@ const config = {
           },
           {
             loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+            },
           },
         ],
       },
       {
         test: /\.s[ac]ss$/i,
         include: root('node_modules'),
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
